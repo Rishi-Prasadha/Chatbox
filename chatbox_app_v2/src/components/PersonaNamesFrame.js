@@ -16,7 +16,7 @@ const PersonaNamesFrame = () => {
 
   return (
     <>
-      <div className="h-[912px] flex-1 overflow-y-auto flex flex-col items-center justify-start pt-[30px] px-2.5 pb-0 box-border gap-[20px] min-w-[455px] max-w-full text-left text-sm text-dimgray font-text-l-medium mq750:min-w-full">
+      <div className="h-[912px] flex-1 overflow-y-auto flex flex-col items-center justify-start pt-[30px] px-2.5 pb-0 box-border gap-[20px] min-w-[455px] max-w-full text-left text-sm text-dimgray font-text-m-medium mq975:min-w-full">
         <img
           className="w-[53.9px] h-5 relative shrink-0 object-cover"
           loading="lazy"
@@ -78,7 +78,7 @@ const PersonaNamesFrame = () => {
         <div className="w-[600px] flex flex-col items-start justify-start max-w-full shrink-0 text-black">
           <div className="self-stretch flex flex-row flex-wrap items-center justify-center gap-[11px] min-h-[940px]">
             <div
-              className="h-[302px] w-48 rounded-3xs bg-neutral-10 box-border flex flex-col items-center justify-start py-[15px] px-5 gap-[30px] cursor-pointer text-center border-[1px] border-solid border-power-black-power-black-50 mq450:h-[302px]"
+              className="h-[302px] w-48 rounded-3xs bg-neutral-10 box-border flex flex-col items-center justify-start py-[15px] px-5 gap-[30px] cursor-pointer text-center border-[1px] border-solid border-power-black-power-black-50 mq725:h-[302px]"
               onClick={openContactInfoPopout}
             >
               <div className="self-stretch flex flex-col items-center justify-start gap-[10px]">
@@ -96,7 +96,7 @@ const PersonaNamesFrame = () => {
                   </div>
                 </div>
               </div>
-              <div className="rounded-3xl bg-adventure-blue-adventure-blue-50 flex flex-row items-center justify-center py-2 px-[18px] gap-[4px] text-left text-base text-adventure-blue-adventure-blue-500">
+              <div className="rounded-3xl bg-adventure-blue-adventure-blue-50 flex flex-row items-center justify-center py-2 px-[18px] gap-[4px] text-left text-base text-adventure-blue-100">
                 <img
                   className="h-4 w-4 relative overflow-hidden shrink-0 hidden"
                   alt=""
@@ -213,7 +213,7 @@ const PersonaNamesFrame = () => {
                   </div>
                 </div>
               </div>
-              <div className="w-[133px] h-10 rounded-3xl bg-adventure-blue-adventure-blue-50 flex flex-row items-center justify-center py-2 px-5 box-border gap-[4px] text-base text-adventure-blue-adventure-blue-500">
+              <div className="w-[133px] h-10 rounded-3xl bg-adventure-blue-adventure-blue-50 flex flex-row items-center justify-center py-2 px-5 box-border gap-[4px] text-base text-adventure-blue-100">
                 <img
                   className="h-4 w-4 relative overflow-hidden shrink-0 hidden"
                   alt=""
@@ -231,7 +231,7 @@ const PersonaNamesFrame = () => {
             </div>
           </div>
         </div>
-        <div className="w-[113px] h-9 rounded-lg shrink-0 flex flex-row items-center justify-center py-2 px-5 box-border gap-[4px] text-base text-adventure-blue-adventure-blue-500">
+        <div className="w-[113px] h-9 rounded-lg shrink-0 flex flex-row items-center justify-center py-2 px-5 box-border gap-[4px] text-base text-adventure-blue-100">
           <img
             className="h-4 w-4 relative overflow-hidden shrink-0 hidden"
             alt=""

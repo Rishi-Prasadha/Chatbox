@@ -8,7 +8,7 @@ const SearchHistory = () => {
   const navigate = useNavigate();
 
   const onMenuButtonAssemblyClick = useCallback(() => {
-    navigate("/home");
+    navigate("/");
   }, [navigate]);
 
   const onMenuButtonAssembly1Click = useCallback(() => {
@@ -20,29 +20,29 @@ const SearchHistory = () => {
   }, []);
 
   const onButtonContainerClick = useCallback(() => {
-    navigate("/home");
+    navigate("/");
   }, [navigate]);
 
   return (
-    <div className="w-full relative bg-neutral-10 overflow-hidden flex flex-row items-start justify-start tracking-[normal] mq450:pl-5 mq450:pr-5 mq450:box-border">
+    <div className="w-full relative bg-neutral-10 overflow-hidden flex flex-row items-start justify-start tracking-[normal] mq725:pl-5 mq725:pr-5 mq725:box-border">
       <PersonaMenuAssembly
-        personaImage="/persona-image@2x.png"
+        personaImage="/persona-image1@2x.png"
         homeIcon="/home-icon.svg"
-        iconsocialpersonOutline24="/iconsocialperson-outline-24px.svg"
-        iconactionsettings24px="/iconactionsettings-24px.svg"
+        iconsocialpersonOutline24="/iconsocialperson-outline-24px1.svg"
+        iconactionsettings24px="/iconactionsettings-24px1.svg"
         personaImage1="/persona-image-1@2x.png"
         onMenuButtonAssemblyClick={onMenuButtonAssemblyClick}
         onMenuButtonAssembly1Click={onMenuButtonAssembly1Click}
         onMenuButtonAssembly2Click={onMenuButtonAssembly2Click}
       />
-      <main className="flex-1 bg-whitesmoke-200 overflow-y-auto flex flex-row items-start justify-start py-0 px-[60px] box-border gap-[212px] max-w-[calc(100%_-_114px)] text-left text-base text-black-text font-text-l-medium mq450:gap-[53px] mq450:max-w-full mq750:flex-wrap mq750:gap-[106px] mq750:pl-[30px] mq750:pr-[30px] mq750:box-border mq1025:gap-[26px]">
+      <main className="flex-1 bg-whitesmoke-200 overflow-y-auto flex flex-row items-start justify-start py-0 px-[60px] box-border gap-[212px] max-w-[calc(100%_-_114px)] text-left text-base text-black-text font-text-m-medium mq725:gap-[53px] mq725:max-w-full mq975:flex-wrap mq975:gap-[106px] mq975:pl-[30px] mq975:pr-[30px] mq975:box-border mq450:gap-[26px]">
         <div className="h-[104px] rounded-3xs bg-neutral-10 box-border hidden flex-col items-center justify-start gap-[10px] border-[1px] border-solid border-power-black-power-black-50">
           <div className="w-[200px] flex flex-row items-center justify-start py-2.5 px-[15px] box-border gap-[20px]">
             <div className="h-[30px] w-[30px] flex flex-col items-center justify-center">
               <img
                 className="w-[19.5px] h-5 relative"
                 alt=""
-                src="/iconactionsettings-24px.svg"
+                src="/iconactionsettings-24px1.svg"
               />
             </div>
             <div className="h-6 flex flex-row items-center justify-start">

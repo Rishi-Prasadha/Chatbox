@@ -9,7 +9,7 @@ const PersonaMenuAssembly = ({
   onMenuButtonAssembly2Click,
 }) => {
   return (
-    <div className="h-[1024px] w-[114px] bg-neutral-10 box-border overflow-hidden shrink-0 flex flex-col items-center justify-start py-2.5 px-1.5 gap-[20px] border-r-[1px] border-solid border-power-black-power-black-100 mq750:hidden">
+    <div className="h-[1024px] w-[114px] bg-neutral-10 box-border overflow-hidden shrink-0 flex flex-col items-center justify-start py-2.5 px-1.5 gap-[20px] border-r-[1px] border-solid border-power-black-power-black-100 mq975:hidden">
       <div className="flex flex-row items-start justify-start py-0 px-5 gap-[7px]">
         <div className="h-[7px] w-[7px] relative rounded-[50%] bg-darkred box-border border-[0px] border-solid border-power-black-power-black-200" />
         <div className="h-[7px] w-[7px] relative rounded-[50%] bg-yellowgreen box-border border-[0px] border-solid border-power-black-power-black-200" />
@@ -34,7 +34,7 @@ const PersonaMenuAssembly = ({
               <div className="h-9 flex-1" />
             </div>
           </div>
-          <nav className="m-0 w-[93px] rounded-3xs bg-neutral-10 flex flex-col items-center justify-start gap-[10px] text-left text-base text-black-text font-text-l-medium">
+          <nav className="m-0 w-[93px] rounded-3xs bg-neutral-10 flex flex-col items-center justify-start gap-[10px] text-left text-base text-black-text font-text-m-medium">
             <div
               className="flex flex-col items-center justify-center py-2.5 px-6 gap-[3px] cursor-pointer"
               onClick={onMenuButtonAssemblyClick}

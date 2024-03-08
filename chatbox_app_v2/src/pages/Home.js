@@ -7,7 +7,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const onMenuButtonAssemblyClick = useCallback(() => {
-    navigate("/home");
+    navigate("/");
   }, [navigate]);
 
   const onMenuButtonAssembly1Click = useCallback(() => {
@@ -19,7 +19,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="w-full relative bg-neutral-10 overflow-hidden flex flex-row items-start justify-start tracking-[normal] mq750:pl-5 mq750:pr-5 mq750:box-border">
+    <div className="w-full relative bg-neutral-10 overflow-hidden flex flex-row items-start justify-start tracking-[normal] mq975:pl-5 mq975:pr-5 mq975:box-border">
       <PersonaMenuAssembly
         personaImage="/persona-image@2x.png"
         homeIcon="/home-icon.svg"
@@ -30,7 +30,7 @@ const Home = () => {
         onMenuButtonAssembly1Click={onMenuButtonAssembly1Click}
         onMenuButtonAssembly2Click={onMenuButtonAssembly2Click}
       />
-      <main className="flex-1 bg-whitesmoke-200 overflow-y-auto flex flex-row items-center justify-center gap-[10px] max-w-[calc(100%_-_114px)] text-left text-base text-black-text font-text-l-medium mq750:max-w-full">
+      <main className="flex-1 bg-whitesmoke-200 overflow-y-auto flex flex-row items-center justify-center gap-[10px] max-w-[calc(100%_-_114px)] text-left text-base text-black-text font-text-m-medium mq975:max-w-full">
         <div className="h-[104px] rounded-3xs bg-neutral-10 box-border hidden flex-col items-center justify-start gap-[10px] border-[1px] border-solid border-power-black-power-black-50">
           <div className="w-[200px] flex flex-row items-center justify-start py-2.5 px-[15px] box-border gap-[20px]">
             <div className="h-[30px] w-[30px] flex flex-col items-center justify-center">

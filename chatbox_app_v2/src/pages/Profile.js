@@ -7,7 +7,7 @@ const Profile = () => {
   const navigate = useNavigate();
 
   const onMenuButtonAssemblyClick = useCallback(() => {
-    navigate("/home");
+    navigate("/");
   }, [navigate]);
 
   const onMenuButtonAssembly1Click = useCallback(() => {
@@ -19,25 +19,25 @@ const Profile = () => {
   }, []);
 
   return (
-    <div className="w-full relative bg-neutral-10 flex flex-row items-start justify-start tracking-[normal] mq450:pl-5 mq450:pr-5 mq450:box-border">
+    <div className="w-full relative bg-neutral-10 flex flex-row items-start justify-start tracking-[normal] mq725:pl-5 mq725:pr-5 mq725:box-border">
       <PersonaMenuAssembly
-        personaImage="/persona-image@2x.png"
+        personaImage="/persona-image1@2x.png"
         homeIcon="/home-icon.svg"
-        iconsocialpersonOutline24="/iconsocialperson-outline-24px.svg"
-        iconactionsettings24px="/iconactionsettings-24px.svg"
+        iconsocialpersonOutline24="/iconsocialperson-outline-24px1.svg"
+        iconactionsettings24px="/iconactionsettings-24px1.svg"
         personaImage1="/persona-image-1@2x.png"
         onMenuButtonAssemblyClick={onMenuButtonAssemblyClick}
         onMenuButtonAssembly1Click={onMenuButtonAssembly1Click}
         onMenuButtonAssembly2Click={onMenuButtonAssembly2Click}
       />
-      <main className="flex-1 bg-whitesmoke-200 overflow-y-auto flex flex-col items-center justify-start p-[30px] box-border relative gap-[20px] max-w-[calc(100%_-_114px)] text-left text-base text-black-text font-text-l-medium mq450:pt-5 mq450:pb-5 mq450:box-border mq450:max-w-full">
+      <main className="flex-1 bg-whitesmoke-200 overflow-y-auto flex flex-col items-center justify-start p-[30px] box-border relative gap-[20px] max-w-[calc(100%_-_114px)] text-left text-base text-black-text font-text-m-medium mq725:pt-5 mq725:pb-5 mq725:box-border mq725:max-w-full">
         <div className="w-[200px] rounded-3xs bg-neutral-10 box-border hidden flex-col items-center justify-start gap-[10px] z-[0] border-[1px] border-solid border-power-black-power-black-50">
           <div className="self-stretch flex flex-row items-center justify-start py-2.5 px-[15px] gap-[20px]">
             <div className="h-[30px] w-[30px] flex flex-col items-center justify-center">
               <img
                 className="w-[19.5px] h-5 relative"
                 alt=""
-                src="/iconactionsettings-24px.svg"
+                src="/iconactionsettings-24px1.svg"
               />
             </div>
             <div className="h-6 flex flex-row items-center justify-start">
@@ -147,7 +147,7 @@ const Profile = () => {
               alt=""
               src="/solidemojihappy.svg"
             />
-            <div className="h-6 w-[38px] relative text-base leading-[24px] font-medium font-text-l-medium text-adventure-blue-adventure-blue-500 text-left inline-block">{`Save `}</div>
+            <div className="h-6 w-[38px] relative text-base leading-[24px] font-medium font-text-m-medium text-adventure-blue-100 text-left inline-block">{`Save `}</div>
             <img
               className="h-4 w-4 relative overflow-hidden shrink-0 hidden"
               alt=""

@@ -50,7 +50,7 @@ const NameAreaInput = ({
 
   return (
     <div
-      className="w-[700px] rounded-3xs box-border flex flex-col items-center justify-start py-2.5 px-[9px] gap-[20px] max-w-full text-left text-xs text-neutral-60 font-text-l-medium border-[1px] border-solid border-black"
+      className="w-[700px] rounded-3xs box-border flex flex-col items-center justify-start py-2.5 px-[9px] gap-[20px] max-w-full text-left text-xs text-neutral-60 font-text-m-medium border-[1px] border-solid border-black"
       style={nameAreaInputStyle}
     >
       <div className="self-stretch flex flex-col items-center justify-start gap-[10px] text-sm text-neutral-90">

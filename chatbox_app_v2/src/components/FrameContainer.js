@@ -4,7 +4,7 @@ const FrameContainer = ({
   onButtonContainerClick,
 }) => {
   return (
-    <div className="flex flex-col items-start justify-start pt-10 px-0 pb-0 text-left text-base text-adventure-blue-adventure-blue-500 font-text-l-medium">
+    <div className="flex flex-col items-start justify-start pt-10 px-0 pb-0 text-left text-base text-adventure-blue-100 font-text-m-medium">
       <div
         className="rounded-lg flex flex-row items-center justify-start py-1.5 px-5 gap-[4px] cursor-pointer"
         onClick={onButtonContainerClick}
