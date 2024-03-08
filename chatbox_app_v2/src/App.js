@@ -5,10 +5,17 @@ import {
   useNavigationType,
   useLocation,
 } from "react-router-dom";
-import Home from "./pages/Home";
+import AccountSettings1 from "./pages/AccountSettings1";
+import AccountSettings from "./pages/AccountSettings";
+import Settings from "./pages/Settings";
 import SearchScreen from "./pages/SearchScreen";
 import Profile from "./pages/Profile";
 import SearchHistory from "./pages/SearchHistory";
+import Home from "./pages/Home";
+import SignUpScreen1 from "./pages/SignUpScreen1";
+import Profile from "./pages/Profile1";
+import SignUpScreen from "./pages/SignUpScreen";
+import SignInScreen from "./pages/SignInScreen";
 
 function App() {
   const action = useNavigationType();
@@ -30,6 +37,14 @@ function App() {
         title = "";
         metaDescription = "";
         break;
+      case "/account-settings":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/settings":
+        title = "";
+        metaDescription = "";
+        break;
       case "/search-screen":
         title = "";
         metaDescription = "";
@@ -39,6 +54,26 @@ function App() {
         metaDescription = "";
         break;
       case "/search-history":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/home":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/signup-screen1":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/-profile":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/signup-screen":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/sign-in-screen":
         title = "";
         metaDescription = "";
         break;
@@ -60,10 +95,17 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<AccountSettings1 />} />
+      <Route path="/account-settings" element={<AccountSettings />} />
+      <Route path="/settings" element={<Settings />} />
       <Route path="/search-screen" element={<SearchScreen />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/search-history" element={<SearchHistory />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/signup-screen1" element={<SignUpScreen1 />} />
+      <Route path="/-profile" element={<Profile />} />
+      <Route path="/signup-screen" element={<SignUpScreen />} />
+      <Route path="/sign-in-screen" element={<SignInScreen />} />
     </Routes>
   );
 }

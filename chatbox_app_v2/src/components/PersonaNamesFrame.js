@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import ContactInfoPopout from "./ContactInfoPopout";
+import ContactInfoPopout from "/";
 import PortalPopup from "./PortalPopup";
 import ProfileTile from "./ProfileTile";
 
@@ -16,14 +16,14 @@ const PersonaNamesFrame = () => {
 
   return (
     <>
-      <div className="h-[912px] flex-1 overflow-y-auto flex flex-col items-center justify-start pt-[30px] px-2.5 pb-0 box-border gap-[20px] min-w-[455px] max-w-full text-left text-sm text-dimgray font-text-m-medium mq975:min-w-full">
+      <div className="h-[912px] w-[700px] overflow-y-auto shrink-0 flex flex-col items-center justify-start pt-[30px] px-[50px] pb-0 box-border gap-[20px] max-w-full text-left text-sm text-dimgray font-text-l-medium">
         <img
           className="w-[53.9px] h-5 relative shrink-0 object-cover"
           loading="lazy"
           alt=""
           src="/guzo-1-1@2x.png"
         />
-        <div className="w-[600px] flex flex-row items-center justify-end max-w-full shrink-0">
+        <div className="self-stretch flex flex-row items-center justify-end shrink-0">
           <img
             className="h-10 w-10 relative rounded-[50%] object-cover"
             loading="lazy"
@@ -31,7 +31,7 @@ const PersonaNamesFrame = () => {
             src="/ellipse-1@2x.png"
           />
         </div>
-        <div className="w-[600px] rounded-3xl bg-adventure-blue-adventure-blue-50 box-border flex flex-row items-center justify-start py-2 pr-[17px] pl-[15px] max-w-full shrink-0 border-[1px] border-solid border-neutral-50">
+        <div className="self-stretch rounded-3xl bg-adventure-blue-adventure-blue-50 box-border flex flex-row items-center justify-start py-2 px-[15px] max-w-full shrink-0 border-[1px] border-solid border-neutral-50">
           <div className="h-[60px] flex-1 relative leading-[20px] font-medium inline-block max-w-full">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
             cursus augue nec libero scelerisque venenatis. Nullam lobortis dui
@@ -39,7 +39,7 @@ const PersonaNamesFrame = () => {
             lobortis vestibulum?
           </div>
         </div>
-        <div className="w-[600px] flex flex-row items-center justify-start max-w-full shrink-0">
+        <div className="self-stretch flex flex-row items-center justify-start shrink-0">
           <img
             className="h-10 w-10 relative rounded-[50%] object-cover"
             loading="lazy"
@@ -47,7 +47,7 @@ const PersonaNamesFrame = () => {
             src="/ellipse-2@2x.png"
           />
         </div>
-        <div className="w-[600px] rounded-3xl bg-adventure-blue-adventure-blue-50 box-border flex flex-row items-center justify-start py-2 pr-[17px] pl-[15px] max-w-full shrink-0 border-[1px] border-solid border-neutral-50">
+        <div className="self-stretch rounded-3xl bg-adventure-blue-adventure-blue-50 box-border flex flex-row items-center justify-start py-2 px-[15px] max-w-full shrink-0 border-[1px] border-solid border-neutral-50">
           <div className="h-80 flex-1 relative leading-[20px] font-medium inline-block max-w-full">
             <p className="m-0">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
@@ -75,10 +75,10 @@ const PersonaNamesFrame = () => {
             <p className="m-0">Profiles relevant to your request:</p>
           </div>
         </div>
-        <div className="w-[600px] flex flex-col items-start justify-start max-w-full shrink-0 text-black">
-          <div className="self-stretch flex flex-row flex-wrap items-center justify-center gap-[11px] min-h-[940px]">
+        <div className="self-stretch flex flex-col items-start justify-start shrink-0 text-black">
+          <div className="self-stretch flex flex-row flex-wrap items-center justify-center gap-[10px] min-h-[940px]">
             <div
-              className="h-[302px] w-48 rounded-3xs bg-neutral-10 box-border flex flex-col items-center justify-start py-[15px] px-5 gap-[30px] cursor-pointer text-center border-[1px] border-solid border-power-black-power-black-50 mq725:h-[302px]"
+              className="h-[302px] w-48 rounded-3xs bg-neutral-10 box-border flex flex-col items-center justify-start py-[15px] px-5 gap-[30px] cursor-pointer text-center border-[1px] border-solid border-power-black-power-black-50 mq450:h-[302px]"
               onClick={openContactInfoPopout}
             >
               <div className="self-stretch flex flex-col items-center justify-start gap-[10px]">
@@ -96,13 +96,13 @@ const PersonaNamesFrame = () => {
                   </div>
                 </div>
               </div>
-              <div className="rounded-3xl bg-adventure-blue-adventure-blue-50 flex flex-row items-center justify-center py-2 px-[18px] gap-[4px] text-left text-base text-adventure-blue-100">
+              <div className="rounded-3xl bg-adventure-blue-adventure-blue-50 flex flex-row items-center justify-center py-2 px-5 gap-[4px] text-left text-base text-adventure-blue-adventure-blue-500">
                 <img
                   className="h-4 w-4 relative overflow-hidden shrink-0 hidden"
                   alt=""
                   src="/solidemojihappy.svg"
                 />
-                <div className="h-6 w-[97px] relative tracking-[-0.01em] leading-[24px] font-medium inline-block">
+                <div className="h-6 w-[93px] relative tracking-[-0.01em] leading-[24px] font-medium inline-block">
                   Contact Info
                 </div>
                 <img
@@ -141,7 +141,7 @@ const PersonaNamesFrame = () => {
               propFlex="1"
               propAlignSelf="stretch"
               propWidth="127px"
-              propWidth1="133px"
+              propWidth1="134px"
               propHeight1="40px"
               propAlignSelf1="stretch"
               propFlex1="1"
@@ -155,7 +155,7 @@ const PersonaNamesFrame = () => {
               propFlex="1"
               propAlignSelf="stretch"
               propWidth="36px"
-              propWidth1="133px"
+              propWidth1="134px"
               propHeight1="40px"
               propAlignSelf1="stretch"
               propFlex1="1"
@@ -169,7 +169,7 @@ const PersonaNamesFrame = () => {
               propFlex="1"
               propAlignSelf="stretch"
               propWidth="82px"
-              propWidth1="133px"
+              propWidth1="134px"
               propHeight1="40px"
               propAlignSelf1="stretch"
               propFlex1="1"
@@ -183,7 +183,7 @@ const PersonaNamesFrame = () => {
               propFlex="1"
               propAlignSelf="stretch"
               propWidth="72px"
-              propWidth1="133px"
+              propWidth1="134px"
               propHeight1="40px"
               propAlignSelf1="stretch"
               propFlex1="1"
@@ -197,7 +197,7 @@ const PersonaNamesFrame = () => {
               propFlex="1"
               propAlignSelf="stretch"
               propWidth="32px"
-              propWidth1="133px"
+              propWidth1="134px"
               propHeight1="40px"
               propAlignSelf1="stretch"
               propFlex1="1"
@@ -213,7 +213,7 @@ const PersonaNamesFrame = () => {
                   </div>
                 </div>
               </div>
-              <div className="w-[133px] h-10 rounded-3xl bg-adventure-blue-adventure-blue-50 flex flex-row items-center justify-center py-2 px-5 box-border gap-[4px] text-base text-adventure-blue-100">
+              <div className="w-[134px] h-10 rounded-3xl bg-adventure-blue-adventure-blue-50 flex flex-row items-center justify-center py-2 px-5 box-border gap-[4px] text-base text-adventure-blue-adventure-blue-500">
                 <img
                   className="h-4 w-4 relative overflow-hidden shrink-0 hidden"
                   alt=""
@@ -231,7 +231,7 @@ const PersonaNamesFrame = () => {
             </div>
           </div>
         </div>
-        <div className="w-[113px] h-9 rounded-lg shrink-0 flex flex-row items-center justify-center py-2 px-5 box-border gap-[4px] text-base text-adventure-blue-100">
+        <div className="w-[114px] h-10 rounded-lg shrink-0 flex flex-row items-center justify-center py-2 px-5 box-border gap-[4px] text-base text-adventure-blue-adventure-blue-500">
           <img
             className="h-4 w-4 relative overflow-hidden shrink-0 hidden"
             alt=""

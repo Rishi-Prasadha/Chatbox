@@ -1,35 +1,21 @@
-import { useMemo } from "react";
-
-const PersonaMenuAssembly = ({
+const PersonaMenuAssembly1 = ({
   personaImage,
   homeIcon,
   iconsocialpersonOutline24,
   iconactionsettings24px,
   personaImage1,
-  menuFrameHeight,
-  menuFrameFlex,
   onMenuButtonAssemblyClick,
   onMenuButtonAssembly1Click,
   onMenuButtonAssembly2Click,
 }) => {
-  const frameDivStyle = useMemo(() => {
-    return {
-      height: menuFrameHeight,
-      flex: menuFrameFlex,
-    };
-  }, [menuFrameHeight, menuFrameFlex]);
-
   return (
-    <div className="h-[1024px] w-[114px] bg-neutral-10 box-border overflow-hidden shrink-0 flex flex-col items-center justify-start py-2.5 px-1.5 gap-[20px] border-r-[1px] border-solid border-power-black-power-black-100 mq450:hidden">
+    <div className="h-[1024px] w-[114px] bg-neutral-10 box-border overflow-hidden shrink-0 flex flex-col items-center justify-start pt-2.5 px-1.5 pb-0 gap-[20px] border-r-[1px] border-solid border-power-black-power-black-100 mq450:hidden">
       <div className="flex flex-row items-start justify-start py-0 px-5 gap-[7px]">
         <div className="h-[7px] w-[7px] relative rounded-[50%] bg-darkred box-border border-[0px] border-solid border-power-black-power-black-200" />
         <div className="h-[7px] w-[7px] relative rounded-[50%] bg-yellowgreen box-border border-[0px] border-solid border-power-black-power-black-200" />
         <div className="h-[7px] w-[7px] relative rounded-[50%] bg-darkgreen box-border border-[0px] border-solid border-power-black-power-black-200" />
       </div>
-      <div
-        className="self-stretch h-[987px] flex flex-col items-center justify-between pt-0 px-0 pb-[30px] box-border"
-        style={frameDivStyle}
-      >
+      <div className="self-stretch flex-1 flex flex-col items-center justify-between pt-0 px-0 pb-[30px]">
         <div className="self-stretch h-[698px] flex flex-col items-center justify-start gap-[20px]">
           <div className="self-stretch h-[110px] flex flex-col items-center justify-start">
             <div className="self-stretch flex-1 flex flex-col items-center justify-start">
@@ -118,4 +104,4 @@ const PersonaMenuAssembly = ({
   );
 };
 
-export default PersonaMenuAssembly;
+export default PersonaMenuAssembly1;

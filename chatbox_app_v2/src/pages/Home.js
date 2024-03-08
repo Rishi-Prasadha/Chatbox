@@ -1,13 +1,13 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import PersonaMenuAssembly from "../components/PersonaMenuAssembly";
+import PersonaMenuAssembly1 from "../components/PersonaMenuAssembly1";
 import SearchBox from "../components/SearchBox";
 
 const Home = () => {
   const navigate = useNavigate();
 
   const onMenuButtonAssemblyClick = useCallback(() => {
-    navigate("/");
+    navigate("/home");
   }, [navigate]);
 
   const onMenuButtonAssembly1Click = useCallback(() => {
@@ -15,22 +15,22 @@ const Home = () => {
   }, [navigate]);
 
   const onMenuButtonAssembly2Click = useCallback(() => {
-    // Please sync "Settings" to the project
-  }, []);
+    navigate("/settings");
+  }, [navigate]);
 
   return (
-    <div className="w-full relative bg-neutral-10 overflow-hidden flex flex-row items-start justify-start tracking-[normal] mq975:pl-5 mq975:pr-5 mq975:box-border">
-      <PersonaMenuAssembly
-        personaImage="/persona-image@2x.png"
+    <div className="w-full relative bg-neutral-10 overflow-hidden flex flex-row items-start justify-start tracking-[normal] mq450:pl-5 mq450:pr-5 mq450:box-border">
+      <PersonaMenuAssembly1
+        personaImage="/persona-image1@2x.png"
         homeIcon="/home-icon.svg"
         iconsocialpersonOutline24="/iconsocialperson-outline-24px.svg"
         iconactionsettings24px="/iconactionsettings-24px.svg"
-        personaImage1="/persona-image-1@2x.png"
+        personaImage1="/persona-image-11@2x.png"
         onMenuButtonAssemblyClick={onMenuButtonAssemblyClick}
         onMenuButtonAssembly1Click={onMenuButtonAssembly1Click}
         onMenuButtonAssembly2Click={onMenuButtonAssembly2Click}
       />
-      <main className="flex-1 bg-whitesmoke-200 overflow-y-auto flex flex-row items-center justify-center gap-[10px] max-w-[calc(100%_-_114px)] text-left text-base text-black-text font-text-m-medium mq975:max-w-full">
+      <main className="flex-1 bg-whitesmoke overflow-y-auto flex flex-row items-start justify-center py-0 px-5 box-border gap-[10px] max-w-[calc(100%_-_114px)] text-left text-base text-black-text font-text-l-medium mq450:max-w-full">
         <div className="h-[104px] rounded-3xs bg-neutral-10 box-border hidden flex-col items-center justify-start gap-[10px] border-[1px] border-solid border-power-black-power-black-50">
           <div className="w-[200px] flex flex-row items-center justify-start py-2.5 px-[15px] box-border gap-[20px]">
             <div className="h-[30px] w-[30px] flex flex-col items-center justify-center">
@@ -62,7 +62,7 @@ const Home = () => {
               </div>
             </div>
             <div className="h-[22px] flex-1 flex flex-row items-center justify-start">
-              <div className="self-stretch flex flex-row items-center justify-start py-0 pr-5 pl-0">
+              <div className="self-stretch flex flex-row items-center justify-start">
                 <div className="self-stretch w-[97px] relative tracking-[-0.01em] leading-[22px] font-semibold inline-block overflow-hidden text-ellipsis whitespace-nowrap">
                   Profile Name
                 </div>
@@ -76,7 +76,7 @@ const Home = () => {
               </div>
             </div>
             <div className="h-[22px] flex-1 flex flex-row items-center justify-start">
-              <div className="self-stretch flex flex-row items-center justify-start py-0 pr-5 pl-0">
+              <div className="self-stretch flex flex-row items-center justify-start">
                 <div className="self-stretch w-[97px] relative tracking-[-0.01em] leading-[22px] font-semibold inline-block overflow-hidden text-ellipsis whitespace-nowrap">
                   Profile Name
                 </div>
@@ -90,7 +90,7 @@ const Home = () => {
               </div>
             </div>
             <div className="h-[22px] flex-1 flex flex-row items-center justify-start">
-              <div className="self-stretch flex flex-row items-center justify-start py-0 pr-5 pl-0">
+              <div className="self-stretch flex flex-row items-center justify-start">
                 <div className="self-stretch w-[97px] relative tracking-[-0.01em] leading-[22px] font-semibold inline-block overflow-hidden text-ellipsis whitespace-nowrap">
                   Profile Name
                 </div>
@@ -104,7 +104,7 @@ const Home = () => {
               </div>
             </div>
             <div className="h-[22px] flex-1 flex flex-row items-center justify-start">
-              <div className="self-stretch flex flex-row items-center justify-start py-0 pr-5 pl-0">
+              <div className="self-stretch flex flex-row items-center justify-start">
                 <div className="self-stretch w-[97px] relative tracking-[-0.01em] leading-[22px] font-semibold inline-block overflow-hidden text-ellipsis whitespace-nowrap">
                   Profile Name
                 </div>
@@ -118,7 +118,7 @@ const Home = () => {
               </div>
             </div>
             <div className="h-[22px] flex-1 flex flex-row items-center justify-start">
-              <div className="self-stretch flex flex-row items-center justify-start py-0 pr-5 pl-0">
+              <div className="self-stretch flex flex-row items-center justify-start">
                 <div className="self-stretch w-[97px] relative tracking-[-0.01em] leading-[22px] font-semibold inline-block overflow-hidden text-ellipsis whitespace-nowrap">
                   Profile Name
                 </div>
