@@ -13,7 +13,7 @@ import Profile from "./pages/Profile";
 import SearchHistory from "./pages/SearchHistory";
 import Home from "./pages/Home";
 import SignUpScreen1 from "./pages/SignUpScreen1";
-import Profile from "./pages/Profile1";
+import Profile1 from "./pages/Profile1";
 import SignUpScreen from "./pages/SignUpScreen";
 import SignInScreen from "./pages/SignInScreen";
 

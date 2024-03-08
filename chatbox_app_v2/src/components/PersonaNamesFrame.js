@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import ContactInfoPopout from "/";
+import ContactInfoPopout from "./ContactInfoPopout";
 import PortalPopup from "./PortalPopup";
 import ProfileTile from "./ProfileTile";
 
