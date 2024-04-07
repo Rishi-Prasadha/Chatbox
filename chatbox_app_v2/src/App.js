@@ -128,14 +128,14 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<AccountSettings1 />} />
+      <Route path="/bn" element={<AccountSettings1 />} />
       <Route path="/account-settings" element={<AccountSettings />} />
       <Route path="/settings" element={<Settings />} />
       <Route path="/search-screen" element={<SearchScreen />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/search-history" element={<SearchHistory />} />
       <Route path="/home" element={<Home />} />
-      <Route path="/signup-screen1" element={<SignUpScreen1 />} />
+      <Route path="/" element={<SignUpScreen1 />} />
       <Route path="/-profile" element={<Profile />} />
       <Route path="/signup-screen" element={<SignUpScreen />} />
       <Route path="/sign-in-screen" element={<SignInScreen />} />
