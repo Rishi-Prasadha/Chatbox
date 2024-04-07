@@ -1,8 +1,13 @@
-import { useCallback } from "react";
+import { useCallback,useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PersonaMenuAssembly1 from "../components/PersonaMenuAssembly1";
 import ProfileInputFrames from "../components/ProfileInputFrames";
-import NameAreaInput from "../components/NameAreaInput";
+import ContactInput from "../components/contactnput";
+import { orgState } from "../recoil/state";
+import { useRecoilValue,useRecoilState } from "recoil";
+import Modal from "../components/modal"
+import {AiOutlineClose } from "react-icons/ai"
+
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -19,18 +24,28 @@ const Profile = () => {
     navigate("/settings");
   }, [navigate]);
 
+   const [org,setOrg]=useRecoilState(orgState)
+   const [trigger,setTrigger]=useState(false)
+   
   return (
+    <>
+    
+  
     <div className="w-full relative bg-neutral-10 flex flex-row items-start justify-start tracking-[normal] mq450:pl-5 mq450:pr-5 mq450:box-border">
-      <PersonaMenuAssembly1
-        personaImage="/persona-image1@2x.png"
-        homeIcon="/home-icon.svg"
-        iconsocialpersonOutline24="/iconsocialperson-outline-24px.svg"
-        iconactionsettings24px="/iconactionsettings-24px.svg"
-        personaImage1="/persona-image-11@2x.png"
-        onMenuButtonAssemblyClick={onMenuButtonAssemblyClick}
-        onMenuButtonAssembly1Click={onMenuButtonAssembly1Click}
-        onMenuButtonAssembly2Click={onMenuButtonAssembly2Click}
-      />
+      <div className="h-screen bg-black">
+            <PersonaMenuAssembly1
+              personaImage="/persona-image1@2x.png"
+              homeIcon="/home-icon.svg"
+              iconsocialpersonOutline24="/iconsocialperson-outline-24px.svg"
+              iconactionsettings24px="/iconactionsettings-24px.svg"
+              personaImage1="/persona-image-11@2x.png"
+              onMenuButtonAssemblyClick={onMenuButtonAssemblyClick}
+              onMenuButtonAssembly1Click={onMenuButtonAssembly1Click}
+              onMenuButtonAssembly2Click={onMenuButtonAssembly2Click}
+            />
+
+      </div>
+ 
       <main className="flex-1 bg-whitesmoke overflow-y-auto flex flex-col items-end justify-start py-[30px] px-[263px] box-border relative gap-[20px] max-w-[calc(100%_-_114px)] text-left text-base text-black-text font-text-l-medium lg:pl-[131px] lg:pr-[131px] lg:box-border mq450:pt-5 mq450:pb-5 mq450:box-border mq450:max-w-full">
         <div className="w-[200px] rounded-3xs bg-neutral-10 box-border hidden flex-col items-center justify-start gap-[10px] z-[0] border-[1px] border-solid border-power-black-power-black-50">
           <div className="self-stretch flex flex-row items-center justify-start py-2.5 px-[15px] gap-[20px]">
@@ -155,29 +170,20 @@ const Profile = () => {
           />
         </button>
         <section className="self-stretch rounded-3xs bg-neutral-10 overflow-y-auto shrink-0 flex flex-col items-start justify-start pt-[25px] px-[30px] pb-0 box-border gap-[485px] max-w-full text-left text-base text-adventure-blue-adventure-blue-500 font-text-l-medium mq450:gap-[242px]">
-          <ProfileInputFrames />
+          <ProfileInputFrames
+              org={org}
+              setOrg={setOrg}
+            />
           <div className="self-stretch h-[-515px] shrink-0 flex flex-row items-start justify-start py-0 px-5 box-border max-w-full">
-            <div className="flex-1 flex flex-col items-start justify-start gap-[20px] max-w-full">
-              <NameAreaInput
-                gordonTaylor="Rishi Prasadha"
-                cEO="Chief Cool Officer"
-                solidemojiHappy="/solidemojihappy.svg"
-                solidemojiHappy1="/solidemojihappy.svg"
-                propFlex="unset"
-                propAlignSelf="stretch"
-                propHeight="20px"
-                propAlignSelf1="stretch"
-                propHeight1="unset"
-                propPadding="unset"
-                propHeight2="20px"
-              />
+            <div className="flex-1 flex flex-col items-start justify-start gap-[20px] max-w-full py-5">
+       
               <div className="w-[148px] h-10 rounded-3xl bg-adventure-blue-adventure-blue-50 flex flex-row items-start justify-start py-2 px-5 box-border gap-[4px]">
                 <img
                   className="h-4 w-4 relative overflow-hidden shrink-0 hidden"
                   alt=""
                   src="/solidemojihappy.svg"
                 />
-                <div className="self-stretch flex-1 relative tracking-[-0.01em] leading-[24px] font-medium">
+                <div className="self-stretch flex-1 relative tracking-[-0.01em] leading-[24px] font- " onClick={()=>setTrigger(true)}>
                   Add a Contact
                 </div>
                 <img
@@ -191,6 +197,34 @@ const Profile = () => {
         </section>
       </main>
     </div>
+    <Modal trigger={trigger}  cname="w-1/2    px-4 rounded-lg bg-white py-6" >
+               {/* <div className='w-full flex justify-end px-6 py-2 bg-white'>
+                    <AiOutlineClose 
+                    onClick={()=>setTrigger(false)}
+                 />
+                 </div> */}
+
+                 <div className="bg-white w-full ">
+              <ContactInput
+                  gordonTaylor="Rishi Prasadha"
+                  cEO="Chief Cool Officer"
+                  solidemojiHappy="/solidemojihappy.svg"
+                  solidemojiHappy1="/solidemojihappy.svg"
+                  propFlex="unset"
+                  propAlignSelf="stretch"
+                  propHeight="20px"
+                  propAlignSelf1="stretch"
+                  propHeight1="unset"
+                  propPadding="unset"
+                  propHeight2="20px"
+                  setTrigger={setTrigger}
+                  org={org}
+                  setOrg={setOrg}
+                />
+
+                 </div>
+      </Modal>
+    </>
   );
 };
 

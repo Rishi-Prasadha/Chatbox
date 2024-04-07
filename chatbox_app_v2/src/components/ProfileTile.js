@@ -1,8 +1,8 @@
-import { useMemo } from "react";
-
+import { useMemo,useState } from "react";
+import ContactInfoPopout from "./ContactInfoPopout";
+import Modal from "./modal";
 const ProfileTile = ({
-  personaImage,
-  bornGlobal,
+org,
   solidemojiHappy,
   solidemojiHappy1,
   propHeight,
@@ -47,14 +47,17 @@ const ProfileTile = ({
     };
   }, [propAlignSelf1, propFlex1]);
 
+  
+
   return (
+    <>
     <div className="h-[302px] w-48 rounded-3xs bg-neutral-10 box-border flex flex-col items-center justify-start py-[15px] px-5 gap-[30px] text-left text-sm text-black font-text-l-medium border-[1px] border-solid border-power-black-power-black-50 mq450:h-[302px]">
       <div className="self-stretch flex flex-col items-center justify-start gap-[10px]">
         <img
           className="w-[120px] h-[120px] rounded-81xl overflow-hidden shrink-0 object-cover"
           loading="lazy"
           alt=""
-          src={personaImage}
+          src={org?.img}
         />
         <div
           className="self-stretch flex flex-col items-center justify-start"
@@ -68,7 +71,7 @@ const ProfileTile = ({
               className="h-5 w-[79px] relative leading-[20px] font-semibold inline-block"
               style={bornGlobalStyle}
             >
-              {bornGlobal}
+              {org?.name}
             </div>
           </div>
         </div>
@@ -95,6 +98,10 @@ const ProfileTile = ({
         />
       </div>
     </div>
+
+        
+    </>
+
   );
 };
 

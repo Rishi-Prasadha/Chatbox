@@ -1,6 +1,11 @@
-import { useCallback } from "react";
+import { useCallback ,useEffect,useState} from "react";
 import { useNavigate } from "react-router-dom";
-import PersonaMenuAssembly from "../components/PersonaMenuAssembly";
+import PersonaMenuAssembly1 from "../components/PersonaMenuAssembly1";
+import Modal from "../components/modal";
+import { ClipLoader } from "react-spinners";
+import { authApi } from "../api/auth";
+import { useRecoilValue } from "recoil";
+import { accountTypeState } from "../recoil/state";
 
 const Settings = () => {
   const navigate = useNavigate();
@@ -29,9 +34,33 @@ const Settings = () => {
     // Please sync "Teammates" to the project
   }, []);
 
+  const [trigger,setTrigger]=useState(false)
+  const [loader,setLoading]=useState(false)
+  const currentUser=useRecoilValue(accountTypeState)
+
+  const deleteUser=async()=>{
+        console.log("delete")
+    
+      try{
+      
+            const res=await authApi.delete(currentUser)
+            
+            res&&localStorage.clear();
+           
+            res&&navigate("/signup-screen1");
+                  res&&setLoadiing(false)
+        }catch(e){
+          setLoading(false)
+
+      }
+  }
+
+  console.log(loader,"lpad")
+
   return (
+    <>
     <div className="w-full relative bg-neutral-10 overflow-hidden flex flex-row items-start justify-start tracking-[normal] mq450:pl-5 mq450:pr-5 mq450:box-border">
-      <PersonaMenuAssembly
+      <PersonaMenuAssembly1
         personaImage="/persona-image1@2x.png"
         homeIcon="/home-icon.svg"
         iconsocialpersonOutline24="/iconsocialperson-outline-24px.svg"
@@ -158,27 +187,17 @@ const Settings = () => {
               Settings
             </h3>
           </div>
-          <div className="w-[249px] flex-1 flex flex-col items-start justify-start gap-[20px] text-base">
+          <div className="flex flex-col -space-y-4">
             <div
-              className="self-stretch flex-1 relative cursor-pointer"
+              className="self-stretch relative cursor-pointer "
               onClick={onAccountSettingsTextClick}
             >
-              Account Settings
+             <h5 className="text-sm">Account Settings</h5> 
             </div>
-            <div
-              className="self-stretch h-[25px] relative inline-block shrink-0 cursor-pointer"
-              onClick={onTeammatesTextClick}
-            >
-              Teammates
-            </div>
-            <div
-              className="self-stretch flex-1 relative cursor-pointer"
-              onClick={onBillingTextClick}
-            >
-              Billing
-            </div>
-            <div className="self-stretch h-[25px] relative text-energy-red-energy-red-500 inline-block shrink-0">
-              Delete Account
+        
+        
+            <div className="self-stretch relative text-energy-red-energy-red-500 inline-block shrink-0 cursor-pointer">
+             <h5 className="text-sm" onClick={()=>setTrigger(true)}>Delete Account</h5> 
             </div>
           </div>
         </div>
@@ -190,6 +209,29 @@ const Settings = () => {
         />
       </main>
     </div>
+        <Modal trigger={trigger}  cname="w-1/3    px-4 rounded-lg bg-white py-6" >
+            <div className="flex w-full flex-col">
+                 <h3 className="w-full text-center text-4xl">Are You sure ? </h3>
+                 <div className="flex justify-center">
+                     <div  className="w-1/2 flex justify-center space-x-6 items-center">
+                        <h5 onClick={()=>setTrigger(false)}>Close</h5>
+                        {!loader?
+
+
+                        <h5 className="bg-red-500 py-2 rounded-full px-6" onClick={()=>setLoading(true)||deleteUser()}>Delete</h5>
+                        :
+                        <ClipLoader color="red" />
+                      }
+                       
+                     </div>
+
+                 </div>
+
+            </div>
+          
+        </Modal>
+
+    </>
   );
 };
 

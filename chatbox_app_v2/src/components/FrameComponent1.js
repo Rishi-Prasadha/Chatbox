@@ -1,19 +1,49 @@
 import { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { ClipLoader } from 'react-spinners';
+import { useRecoilState } from 'recoil';
+import { accountTypeState } from "../recoil/state";
+import { authApi } from "../api/auth";
 const FrameComponent1 = () => {
-  const [placeholderTextValue, setPlaceholderTextValue] = useState("");
-  const [placeholderText1Value, setPlaceholderText1Value] = useState("");
-  const [placeholderText2Value, setPlaceholderText2Value] = useState("");
-  const [placeholderText3Value, setPlaceholderText3Value] = useState("");
+  const [currentUser,setcurrentUser]=useRecoilState(accountTypeState)
+  const [firstname,setFirstname]=useState("")
+  const [lastname,setLastname]=useState("")
+  const [email,setEmail]=useState("")
+  const [password,setPassword]=useState("")
+  const [loader,setLoader]=useState(false)
+  const [errorMsg, setErrorMsg] = useState(null)
+
   const navigate = useNavigate();
 
-  const onButtonClick = useCallback(() => {
-    navigate("/-profile");
-  }, [navigate]);
+  const onButtonClick = async() => {
+     try{
+
+
+          setLoader(true)
+          const user=await authApi.register(email,password,firstname,lastname)
+
+        
+          setLoader(false)
+          localStorage.clear();
+          localStorage.setItem('account',JSON.stringify(user));
+          setcurrentUser(user)
+          user?.id.length >0&& navigate("/org");
+
+
+          
+           console.log(user,"user")
+           setLoader(false)
+        
+       }catch(e){
+          console.log(e)
+          setLoader(false)
+          setErrorMsg(e?.message)
+      }
+   
+  }
 
   return (
-    <form className="m-0 self-stretch flex flex-col items-center justify-start py-10 px-0 box-border gap-[30px] max-w-full">
+    <div className="m-0 self-stretch flex flex-col items-center justify-start py-10 px-0 box-border gap-[30px] max-w-full">
       <div className="self-stretch flex flex-col items-center justify-start gap-[20px] max-w-full">
         <div className="w-[697px] overflow-x-auto flex flex-row items-start justify-center gap-[30px] max-w-full">
           <div className="w-[333.5px] rounded-3xs shrink-0 flex flex-col items-start justify-center gap-[4px]">
@@ -25,9 +55,9 @@ const FrameComponent1 = () => {
                 className="[border:none] [outline:none] font-medium font-text-l-medium text-sm bg-[transparent] h-5 w-52 relative tracking-[-0.01em] leading-[20px] text-adventure-blue-adventure-blue-700 text-left inline-block shrink-0 p-0"
                 placeholder="First Name"
                 type="text"
-                value={placeholderTextValue}
+                value={firstname}
                 onChange={(event) =>
-                  setPlaceholderTextValue(event.target.value)
+                  setFirstname(event.target.value)
                 }
               />
             </div>
@@ -44,9 +74,9 @@ const FrameComponent1 = () => {
                 className="[border:none] [outline:none] font-medium font-text-l-medium text-sm bg-[transparent] h-5 w-52 relative tracking-[-0.01em] leading-[20px] text-adventure-blue-adventure-blue-700 text-left inline-block shrink-0 p-0"
                 placeholder="Last Name"
                 type="text"
-                value={placeholderText1Value}
+                value={lastname}
                 onChange={(event) =>
-                  setPlaceholderText1Value(event.target.value)
+                  setLastname(event.target.value)
                 }
               />
             </div>
@@ -64,8 +94,8 @@ const FrameComponent1 = () => {
               className="[border:none] [outline:none] font-medium font-text-l-medium text-sm bg-[transparent] h-5 w-52 relative tracking-[-0.01em] leading-[20px] text-adventure-blue-adventure-blue-700 text-left inline-block shrink-0 p-0"
               placeholder="Email"
               type="text"
-              value={placeholderText2Value}
-              onChange={(event) => setPlaceholderText2Value(event.target.value)}
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
             />
           </div>
           <div className="self-stretch relative text-xs leading-[18px] font-text-l-medium text-neutral-60 text-left hidden">
@@ -81,8 +111,8 @@ const FrameComponent1 = () => {
               className="[border:none] [outline:none] font-medium font-text-l-medium text-sm bg-[transparent] h-5 w-52 relative tracking-[-0.01em] leading-[20px] text-adventure-blue-adventure-blue-700 text-left inline-block shrink-0 p-0"
               placeholder="Password"
               type="text"
-              value={placeholderText3Value}
-              onChange={(event) => setPlaceholderText3Value(event.target.value)}
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
             />
           </div>
           <div className="self-stretch relative text-xs leading-[18px] font-text-l-medium text-neutral-60 text-left hidden">
@@ -106,10 +136,12 @@ const FrameComponent1 = () => {
           </span>
           <span className="text-gray-300">.</span>
         </div>
+       {!loader?
         <button
           className="cursor-pointer [border:none] py-2 px-5 bg-adventure-blue-adventure-blue-50 w-[200px] rounded-3xl flex flex-row items-center justify-center box-border gap-[4px]"
           onClick={onButtonClick}
         >
+      
           <img
             className="h-4 w-4 relative overflow-hidden shrink-0 hidden"
             alt=""
@@ -122,18 +154,27 @@ const FrameComponent1 = () => {
             src="/solidemojihappy.svg"
           />
         </button>
+           :
+                <div className="">
+                         <ClipLoader 
+                            color="blue"
+                            loading={true}
+                            />
+                </div>
+         
+          }
       </div>
       <div className="w-[316px] flex flex-col items-center justify-start py-[30px] px-0 box-border">
         <div className="self-stretch flex flex-col items-center justify-center">
           <div className="w-[285px] h-6 relative text-base tracking-[-0.01em] leading-[24px] font-semibold font-text-l-medium text-center inline-block">
             <span className="text-black">{`Already have a Guzo account? `}</span>
             <span className="text-adventure-blue-adventure-blue-500">
-              Sign in
+              Sign in 
             </span>
           </div>
         </div>
       </div>
-    </form>
+    </div>
   );
 };
 

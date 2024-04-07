@@ -16,11 +16,44 @@ import SignUpScreen1 from "./pages/SignUpScreen1";
 import Profile1 from "./pages/Profile1";
 import SignUpScreen from "./pages/SignUpScreen";
 import SignInScreen from "./pages/SignInScreen";
+import {accountTypeState} from "./recoil/state"
+import { useRecoilState } from "recoil";
+import OrgScreen from "./pages/organizationscreen";
+import {doc,setDoc,
+  addDoc,collection,
+  getDoc,getDocs,
+  query, where,updateDoc,orderBy,onSnapshot} from "firebase/firestore"
+import { db } from "./firebase";
 
 function App() {
   const action = useNavigationType();
   const location = useLocation();
   const pathname = location.pathname;
+
+  const [currentUser,setcurrentUser]=useRecoilState(accountTypeState)
+  const user = localStorage.getItem("account");
+  console.log(user,"user >>>>>")
+  useEffect( ()=>{ 
+    console.log("here>>>>>")
+    setcurrentUser(JSON.parse(user))
+    },[])
+
+    useEffect( ()=>{ 
+      setcurrentUser(JSON.parse(user))
+    if(JSON.parse(user)?.id?.length >0){
+      const unsub = onSnapshot(doc(db,"users",JSON.parse(user)?.id), (doc) => {
+        
+        setcurrentUser({...doc.data(),id:doc?.id})
+       });
+
+    
+      }else{
+        const userLogged = localStorage.getItem("user");
+        setcurrentUser(JSON.parse(userLogged ))
+      }
+ 
+  },[user])
+
 
   useEffect(() => {
     if (action !== "POP") {
@@ -106,6 +139,7 @@ function App() {
       <Route path="/-profile" element={<Profile />} />
       <Route path="/signup-screen" element={<SignUpScreen />} />
       <Route path="/sign-in-screen" element={<SignInScreen />} />
+      <Route path="/org" element={<OrgScreen />} />
     </Routes>
   );
 }

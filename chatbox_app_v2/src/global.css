@@ -10,3 +10,9 @@ body {
 ::after {
   border-width: 0;
 }
+
+
+.no-scrollbar::-webkit-scrollbar,
+body::-webkit-scrollbar{
+   display:none !important;
+}

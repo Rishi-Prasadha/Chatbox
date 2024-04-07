@@ -1,6 +1,8 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import PersonaMenuAssembly from "../components/PersonaMenuAssembly";
+import { accountTypeState, orgState } from "../recoil/state";
+import { useRecoilState,useRecoilValue } from "recoil";
 
 const AccountSettings1 = () => {
   const navigate = useNavigate();

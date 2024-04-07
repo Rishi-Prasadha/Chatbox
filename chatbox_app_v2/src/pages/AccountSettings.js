@@ -1,6 +1,11 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback ,useRef} from "react";
 import { useNavigate } from "react-router-dom";
-import PersonaMenuAssembly from "../components/PersonaMenuAssembly";
+import PersonaMenuAssembly1 from "../components/PersonaMenuAssembly1";
+import { accountTypeState, orgState } from "../recoil/state";
+import { useRecoilState,useRecoilValue } from "recoil";
+import { profileApi } from "../api/profile";
+import { ClipLoader } from "react-spinners";
+
 
 const AccountSettings = () => {
   const [placeholderTextValue, setPlaceholderTextValue] = useState("");
@@ -25,9 +30,56 @@ const AccountSettings = () => {
     navigate("/settings");
   }, [navigate]);
 
+  const [file,setFile]=useState()
+  const [url,setUrl]=useState("")
+  const [currentUser,setcurrentUser]=useRecoilState(accountTypeState)
+  const [loader,setLoader]=useState(false)
+  const [errorMsg, setErrorMsg] = useState(null)
+
+  
+  const hiddenFileInput = useRef()
+
+
+  const handleClick = event => {
+       hiddenFileInput.current.click()
+   }
+
+    const handleChange = async(e)=> {
+        const dir = e.target.files[0]
+        console.log(dir,"dir")
+        if (dir) {
+          setUrl({
+              src: URL.createObjectURL(dir)
+            })
+        }
+       setFile(dir)
+  
+    }
+
+    const create=async()=>{
+      setErrorMsg(null)
+  
+       try{
+           setLoader(true)
+            const user=await profileApi.edit(currentUser,file)
+         
+            console.log(user)
+            user?.status&&localStorage.clear();
+            user?.status&&localStorage.setItem('account',JSON.stringify(user?.data));
+            setcurrentUser(user?.data)
+            setLoader(false)
+       
+        
+  
+       }catch(e){
+           setLoader(false)
+           setErrorMsg(e?.message)
+        }
+    }
+
   return (
     <div className="w-full relative bg-neutral-10 overflow-hidden flex flex-row items-start justify-start tracking-[normal] mq450:pl-5 mq450:pr-5 mq450:box-border">
-      <PersonaMenuAssembly
+      <PersonaMenuAssembly1
         personaImage="/persona-image1@2x.png"
         homeIcon="/home-icon.svg"
         iconsocialpersonOutline24="/iconsocialperson-outline-24px.svg"
@@ -178,14 +230,85 @@ const AccountSettings = () => {
           </div>
           <div className="self-stretch flex flex-col items-start justify-start gap-[30px] max-w-full text-xs">
             <div className="self-stretch flex flex-row items-start justify-center py-0 px-5">
-              <div className="h-[150px] w-[150px] rounded-81xl bg-neutral-601 overflow-hidden shrink-0 flex flex-row items-start justify-start py-[61px] px-0 box-border">
-                <div className="ml-[-25px] h-7 w-[200px] relative tracking-[-0.01em] leading-[15px] inline-block shrink-0">
-                  <p className="m-0">Upload Profile Photo*</p>
-                  <p className="m-0 text-darkslategray">
-                    <i className="font-light">(Acceptable: jpeg, png)</i>
-                  </p>
-                </div>
-              </div>
+                {currentUser?.img?.length ==0?
+                        <>
+                               {url?.src?.length > 0?
+
+                                
+                                        <div className='rounded-full h-44 px-1 w-44 flex flex-col justify-center items-center -space-y-6' style={{background: "rgba(242, 242, 242, 0.6)"}}
+                                            onClick={handleClick}
+                                            >
+                                              <img
+                                                    src={url?.src}
+                                                    className='w-full h-full rounded-full'
+                                                />
+                                        <input
+                                            type="file"
+                                            className='hidden'
+                                            ref={hiddenFileInput}
+                                            onChange={handleChange}
+                                            />
+                                        </div>
+                                        :
+                                    <div className='rounded-full h-44 px-1 w-44 flex flex-col justify-center items-center -space-y-6' style={{background: "rgba(242, 242, 242, 0.6)"}}
+                                          onClick={handleClick}
+                                          >
+                                          <h5 className='text-sm font-light'>Upload Profile Photo*</h5> 
+                                          <h5 className='text-xs font-light'>(Acceptable: jpeg, png)</h5>
+
+                                          <input
+                                              type="file"
+                                              className='hidden'
+                                              ref={hiddenFileInput}
+                                              onChange={handleChange}
+                                              />
+                                         </div>
+                                      }
+                        
+                        
+                                          </>
+                  
+                                      :
+                                  <>
+                                  {url?.src?.length > 0?
+
+                                      
+                                          <div className='rounded-full h-44 px-1 w-44 flex flex-col justify-center items-center -space-y-6' style={{background: "rgba(242, 242, 242, 0.6)"}}
+                                              onClick={handleClick}
+                                              >
+                                                <img
+                                                      src={url?.src}
+                                                      className='w-full h-full rounded-full'
+                                                  />
+                                          <input
+                                              type="file"
+                                              className='hidden'
+                                              ref={hiddenFileInput}
+                                              onChange={handleChange}
+                                              />
+                                          </div>
+                                          :
+                                          <div className='rounded-full h-44 px-1 w-44 flex flex-col justify-center items-center -space-y-6' style={{background: "rgba(242, 242, 242, 0.6)"}}
+                                                  onClick={handleClick}
+                                                  >
+                                                      <img
+                                                            src={currentUser?.img}
+                                                            className='w-full h-full rounded-full'
+                                                        />
+                                                      <input
+                                                        type="file"
+                                                        className='hidden'
+                                                        ref={hiddenFileInput}
+                                                        onChange={handleChange}
+                                                        />
+                                                    </div>
+
+                                              }
+                                      
+                                          </>
+                                    
+                                          }
+                           
             </div>
             <div className="self-stretch flex flex-col items-center justify-start gap-[20px] max-w-full text-left text-power-black-power-black-300">
               <div className="self-stretch flex flex-row items-start justify-center gap-[30px] max-w-full mq450:flex-wrap">
@@ -198,9 +321,9 @@ const AccountSettings = () => {
                       className="[border:none] [outline:none] font-medium font-text-l-medium text-sm bg-[transparent] h-5 w-52 relative tracking-[-0.01em] leading-[20px] text-adventure-blue-adventure-blue-700 text-left inline-block shrink-0 p-0"
                       placeholder="First Name"
                       type="text"
-                      value={placeholderTextValue}
+                      value={currentUser?.firstname}
                       onChange={(event) =>
-                        setPlaceholderTextValue(event.target.value)
+                        setcurrentUser({...currentUser,firstname:event.target.value})
                       }
                     />
                   </div>
@@ -217,9 +340,9 @@ const AccountSettings = () => {
                       className="[border:none] [outline:none] font-medium font-text-l-medium text-sm bg-[transparent] h-5 w-52 relative tracking-[-0.01em] leading-[20px] text-adventure-blue-adventure-blue-700 text-left inline-block shrink-0 p-0"
                       placeholder="Last Name"
                       type="text"
-                      value={placeholderText1Value}
+                      value={currentUser?.lastname}
                       onChange={(event) =>
-                        setPlaceholderText1Value(event.target.value)
+                        setcurrentUser({...currentUser,lastname:event.target.value})
                       }
                     />
                   </div>
@@ -237,9 +360,9 @@ const AccountSettings = () => {
                     className="[border:none] [outline:none] font-medium font-text-l-medium text-sm bg-[transparent] h-5 w-52 relative tracking-[-0.01em] leading-[20px] text-adventure-blue-adventure-blue-700 text-left inline-block shrink-0 p-0"
                     placeholder="Email"
                     type="text"
-                    value={placeholderText2Value}
+                    value={currentUser?.email}
                     onChange={(event) =>
-                      setPlaceholderText2Value(event.target.value)
+                      setcurrentUser({...currentUser,email:event.target.value})
                     }
                   />
                 </div>
@@ -249,9 +372,9 @@ const AccountSettings = () => {
               </div>
               <div className="self-stretch rounded-3xs flex flex-col items-start justify-center gap-[4px]">
                 <div className="self-stretch h-[18px] relative leading-[18px] font-medium inline-block">
-                  Password
+                 Forget Password?
                 </div>
-                <div className="self-stretch rounded-lg bg-neutral-601 overflow-hidden flex flex-row items-center justify-start p-1.5 border-[1px] border-solid border-neutral-100">
+                {/* <div className="self-stretch rounded-lg bg-neutral-601 overflow-hidden flex flex-row items-center justify-start p-1.5 border-[1px] border-solid border-neutral-100">
                   <input
                     className="[border:none] [outline:none] font-medium font-text-l-medium text-sm bg-[transparent] h-5 w-52 relative tracking-[-0.01em] leading-[20px] text-adventure-blue-adventure-blue-700 text-left inline-block shrink-0 p-0"
                     placeholder="Password"
@@ -261,15 +384,21 @@ const AccountSettings = () => {
                       setPlaceholderText3Value(event.target.value)
                     }
                   />
-                </div>
+                </div> */}
                 <div className="self-stretch relative leading-[18px] text-neutral-60 hidden">
                   Text helper
                 </div>
               </div>
-              <div className="self-stretch rounded-3xs flex flex-col items-start justify-center gap-[4px] text-energy-red-energy-red-600">
-                <div className="self-stretch h-[18px] relative leading-[18px] font-medium inline-block">
-                  Delete account
-                </div>
+              <div className="self-stretch rounded-3xs flex flex-col items-start justify-center gap-[4px] text-energy-blue-energy-blue-600">
+                {!loader?
+
+                
+                <button className="py-2 px-6 rounded-full bg-blue-200 text-blue-600" onClick={create}>
+                  Save
+                </button>
+                :
+                <ClipLoader color={"blue"} />
+                  }
                 <div className="w-60 rounded-lg bg-neutral-601 box-border overflow-hidden hidden flex-row items-center justify-start py-1.5 pr-6 pl-1.5 text-sm text-adventure-blue-adventure-blue-700 border-[1px] border-solid border-neutral-100">
                   <div className="h-5 flex-1 relative tracking-[-0.01em] leading-[20px] font-medium inline-block">
                     Password

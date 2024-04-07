@@ -1,18 +1,41 @@
 import { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import FrameComponent from "./FrameComponent";
-
+import { authApi } from "../api/auth";
+import { ClipLoader } from "react-spinners";
+import { accountTypeState } from "../recoil/state";
+import { useRecoilState } from "recoil";
 const FrameComponent2 = () => {
-  const [placeholderTextValue, setPlaceholderTextValue] = useState("");
-  const [placeholderText1Value, setPlaceholderText1Value] = useState("");
+  const [currentUser,setcurrentUser]=useRecoilState(accountTypeState)
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loader,setLoader]=useState(false)
+  const [errorMsg, setErrorMsg] = useState(null)
+
   const navigate = useNavigate();
 
-  const onButtonClick = useCallback(() => {
-    navigate("/-profile");
-  }, [navigate]);
+  const onButtonClick = async() => {
+     try{
+      setLoader(true)
+      const user=await authApi.login(email,password)
+
+    
+      setLoader(false)
+      localStorage.clear();
+      localStorage.setItem('account',JSON.stringify(user));
+      setcurrentUser(user)
+      user?.id.length >0&& navigate("/-profile");
+
+      setLoader(false)
+
+     }catch(e){
+      console.log(e)
+      setLoader(false)
+     }
+  }
 
   return (
-    <form className="m-0 flex-1 flex flex-col items-start justify-start gap-[10px]">
+    <div className="m-0 flex-1 flex flex-col items-start justify-start gap-[10px]">
       <div className="self-stretch rounded-3xs flex flex-col items-start justify-start gap-[4px]">
         <div className="self-stretch h-[18px] relative text-xs leading-[18px] font-medium font-text-l-medium text-power-black-power-black-300 text-left inline-block">
           Email
@@ -22,8 +45,8 @@ const FrameComponent2 = () => {
             className="[border:none] [outline:none] font-medium font-text-l-medium text-sm bg-[transparent] h-5 w-52 relative tracking-[-0.01em] leading-[20px] text-adventure-blue-adventure-blue-700 text-left inline-block shrink-0 p-0"
             placeholder="Email"
             type="text"
-            value={placeholderTextValue}
-            onChange={(event) => setPlaceholderTextValue(event.target.value)}
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
           />
         </div>
         <div className="self-stretch relative text-xs leading-[18px] font-text-l-medium text-neutral-60 text-left hidden">
@@ -39,8 +62,8 @@ const FrameComponent2 = () => {
             className="[border:none] [outline:none] font-medium font-text-l-medium text-sm bg-[transparent] h-5 w-52 relative tracking-[-0.01em] leading-[20px] text-adventure-blue-adventure-blue-700 text-left inline-block shrink-0 p-0"
             placeholder="Password"
             type="text"
-            value={placeholderText1Value}
-            onChange={(event) => setPlaceholderText1Value(event.target.value)}
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
           />
         </div>
         <div className="self-stretch h-[18px] relative text-xs [text-decoration:underline] leading-[18px] font-text-l-medium text-adventure-blue-adventure-blue-5001 text-left inline-block">
@@ -48,6 +71,7 @@ const FrameComponent2 = () => {
         </div>
       </div>
       <div className="self-stretch flex flex-row items-start justify-start pt-0 px-[57.5px] pb-5">
+      {!loader?
         <button
           className="cursor-pointer [border:none] py-2 px-[74.5px] bg-adventure-blue-adventure-blue-50 flex-1 rounded-3xl flex flex-row items-start justify-start gap-[4px]"
           onClick={onButtonClick}
@@ -66,6 +90,14 @@ const FrameComponent2 = () => {
             src="/solidemojihappy.svg"
           />
         </button>
+        :
+                 <div className="flex w-full justify-center">
+                      <ClipLoader 
+                        color="blue"
+                        loading={true}
+                        />
+              </div>
+        }
       </div>
       <div className="self-stretch flex flex-row flex-wrap items-start justify-start gap-[14.5px]">
         <div className="h-3 flex-1 flex flex-col items-start justify-start pt-3 px-0 pb-0 box-border min-w-[78px]">
@@ -112,7 +144,7 @@ const FrameComponent2 = () => {
           </button>
         </div>
       </div>
-    </form>
+    </div>
   );
 };
 
