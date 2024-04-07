@@ -44,9 +44,6 @@ const PersonaMenuAssembly = ({
                 </div>
               </div>
             </div>
-            <div className="w-20 h-20 rounded-6xs bg-power-black-power-black-50 flex flex-row items-start justify-center z-[1] mt-[-70px]">
-              <div className="h-9 flex-1" />
-            </div>
           </div>
           <nav className="m-0 w-[93px] rounded-3xs bg-neutral-10 flex flex-col items-center justify-start gap-[10px] text-left text-base text-black-text font-text-l-medium">
             <div
@@ -119,3 +116,4 @@ const PersonaMenuAssembly = ({
 };
 
 export default PersonaMenuAssembly;
+
