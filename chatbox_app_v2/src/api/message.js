@@ -13,7 +13,7 @@ export const messageApi = {
        
         try{
          
-              const url=`http://0.0.0.0:8080/create-thread`
+              const url=`https://guzo-nlp.onrender.com/create-thread`
       
 
                const config = {
