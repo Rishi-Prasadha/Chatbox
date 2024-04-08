@@ -13,7 +13,7 @@ export const messageApi = {
        
         try{
          
-              const url=`https://guzo-nlp.onrender.com/create-thread`
+              const url=`https://guzo-nlp.onrender.com/create-thread` //https://guzo-nlp.onrender.com
       
 
                const config = {
@@ -45,7 +45,7 @@ export const messageApi = {
     },
     getMessages: async function (threadId) {
         try{
-            const url=`http://0.0.0.0:8080/get-messages/${threadId}`
+            const url=`https://guzo-nlp.onrender.com/get-messages/${threadId}` //http://0.0.0.0:8080
       
 
             const config = {
@@ -72,7 +72,7 @@ export const messageApi = {
        },
        limitMessages: async function (threadId) {
         try{
-            const url=`http://0.0.0.0:8080/limit-messages/${threadId}`
+            const url=`https://guzo-nlp.onrender.com/limit-messages/${threadId}`
       
 
             const config = {
@@ -99,8 +99,8 @@ export const messageApi = {
        },
        sendMessages: async function (threadId,message) {
         try{
-            const url1=`http://0.0.0.0:8080/send-message`
-            const url2=`http://0.0.0.0:8080/run-assistant`
+            const url1=`https://guzo-nlp.onrender.com/send-message`
+            const url2=`https://guzo-nlp.onrender.com/run-assistant`
       
 
             const config = {
