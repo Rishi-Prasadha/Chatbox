@@ -16,3 +16,8 @@ body {
 body::-webkit-scrollbar{
    display:none !important;
 }
+
+
+.response-text {
+  white-space: pre-wrap;
+}

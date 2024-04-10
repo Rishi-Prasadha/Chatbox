@@ -227,12 +227,12 @@ const SearchBox = () => {
                           <div className="flex flex-col px-8 space-y-3">
                               {msg?.texts?.slice(0,3)?.map((text)=>{
                                   return(
-                                    <Link to="/search-screen" state={msg?.thread}>
-                                          <div className="w-full py-2 px-4 rounded-3xl  border border-solid border-neutral-50"  style={{background: "#ECEBFE"}}>
-                                            <p className="font-semibold ">{text}</p>
-                                          </div>
+                                    <div className="w-full py-2 px-4 rounded-3xl  border border-solid border-neutral-50"  style={{background: "#ECEBFE"}}>
+                                        <div className="response-text font-semibold ">{text}</div>
+                                        <p><a href="/search-screen" state={msg?.thread}>View Conversation</a></p>
+
+                                      </div>
                                     
-                                    </Link>
                                    
                                   )
                               })

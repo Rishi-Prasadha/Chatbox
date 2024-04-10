@@ -66,9 +66,9 @@ const PersonaNamesFrame = ({currentChat,state,msgs,setMsg}) => {
                            </div>
 
                            <div className="w-full py-2 px-4 rounded-lg border border-solid border-neutral-50" style={{background: "#ECEBFE"}}>
-                              <p className="leading-[20px] font-medium inline-block ">
+                              <div className="response-text leading-[20px] font-medium inline-block ">
                                 {msg?.text}
-                              </p>
+                              </div>
                           </div>
                           {msg?.keywords?.length !=undefined&&msg?.keywords?.length >0&&
                               <Orgs 
