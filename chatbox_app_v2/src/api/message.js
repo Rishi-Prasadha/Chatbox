@@ -7,13 +7,15 @@ import { db } from '../firebase';
 import axios from 'axios';
 
 
+let domain = "https://guzo-nlp.onrender.com";
+// domain = "http://0.0.0.0:8080";
 
 export const messageApi = {
     startConversation: async function (currentUser) {
        
         try{
          
-              const url=`https://guzo-nlp.onrender.com/create-thread` //https://guzo-nlp.onrender.com
+              const url=`${domain}/create-thread`
       
 
                const config = {
@@ -45,7 +47,7 @@ export const messageApi = {
     },
     getMessages: async function (threadId) {
         try{
-            const url=`https://guzo-nlp.onrender.com/get-messages/${threadId}` //http://0.0.0.0:8080
+            const url=`${domain}/get-messages/${threadId}`
       
 
             const config = {
@@ -72,7 +74,7 @@ export const messageApi = {
        },
        limitMessages: async function (threadId) {
         try{
-            const url=`https://guzo-nlp.onrender.com/limit-messages/${threadId}`
+            const url=`${domain}/limit-messages/${threadId}`
       
 
             const config = {
@@ -99,8 +101,8 @@ export const messageApi = {
        },
        sendMessages: async function (threadId,message) {
         try{
-            const url1=`https://guzo-nlp.onrender.com/send-message`
-            const url2=`https://guzo-nlp.onrender.com/run-assistant`
+            const url1=`${domain}/send-message`
+            const url2=`${domain}/run-assistant`
       
 
             const config = {

@@ -34,7 +34,8 @@ const PersonaNamesFrame = ({currentChat,state,msgs,setMsg}) => {
       }
     },[msgs])
 
-     console.log(msgs,currentChat,"mesgg")
+     console.log("msgs:", msgs)
+     console.log("currentChat:",currentChat)
 
   return (
        <div className="w-full flex flex-col py-20 items-center overflow-x-hidden">
